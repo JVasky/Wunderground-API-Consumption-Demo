@@ -1,0 +1,92 @@
+body{
+    font-family:'Raleway';
+}
+h1{
+    font-size: 48px;
+    text-align: center;
+}
+p{
+    font-size: 18px;
+}
+.daytitle{
+    text-align: center;
+}
+.high{
+    text-align: center;
+}
+.hour0{
+    float: left;
+}
+
+.hour1{
+    display: inline;
+    float: right;
+}
+.low{
+    text-align: center;
+}
+.tday{
+    width: 18em;
+    height: 18em;
+    padding: 10px;
+    margin: auto;
+}
+.wicon{
+    height: 80px;
+    width: 80px;
+    display: block;
+    margin: auto;
+}
+.weather p{
+    text-align: center;
+}
+.weather h2{
+    text-align: center;
+}
+.weather{
+    width: 20em;
+    height: 18em;
+    padding: 5px;
+}
+#almanac{
+    width: 50em;
+    margin-left: auto;
+    margin-right: auto;
+}
+#almanac h2{
+    text-align: center;
+}
+#highs{
+    text-decoration: underline;
+}
+#hourly{
+    width: 50em;
+    margin-left: auto;
+    margin-right: auto;
+}
+#lows{
+    text-decoration: underline;
+}
+#period0{
+    float: left;
+}
+#period1{
+    float: right;
+}
+#prefore{
+    text-align: left;
+}
+#satellite{
+
+}
+#satClouds{
+
+}
+#tdforecast{
+    width: 60em;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+#werror{
+    text-align: center;
+}
