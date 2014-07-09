@@ -1,11 +1,13 @@
 /**
  * Author: James Vasky
  * Title: weather.js
- * Date: 7-7-14
+ * Date: 7--14
  * Description: This is a javaScript file that uses jQuery. Acts as the controller.
+ *
+ * ******* Removed the PHP script as an exercise. Now directly consumes API *******
  */
 $(document).ready(function($) {
-
+var APIKEY = '635161d7b35541ad';
     /*
      * From validation with validator plugin
      */
@@ -31,12 +33,14 @@ $(document).ready(function($) {
     $('#submit').click(function() {
         if($("#myForm").valid()){
             var form = $( "#myForm" ).serializeArray();
+            var zipCode = form[0]['value']; // grab zip from form
+            var forecast = form[1]['value']; // grab forecast type from form
             var units = form[2]['value']; // grab the metric or standard value from form
-            $.ajax({ // send a POST to the php file
-                type:'POST',
-                url: 'weather.php',
-                data: $("#myForm").serialize(),
-                success: function( data ){ // Upon post success, parse the weather and take appropriate action
+            var apiUrl = 'http://api.wunderground.com/api/'+ APIKEY + '/' + forecast + '/q/' + zipCode + '.json';
+            $.ajax({ // send a request to API
+                url: apiUrl,
+                dataType: 'jsonp',
+                success: function( data ){ // Upon success, parse the weather and take appropriate action
                     var weather = parseWeather(data, units);
                     if(weather.type == 'hourly')
                     {
@@ -66,19 +70,18 @@ $(document).ready(function($) {
     */
     function parseWeather(weather, units)
     {
-        var wObj = $.parseJSON(weather); //parse the raw weather JSON from wunderground
         var result; // placeholder
-        if(wObj.hourly_forecast) //if hourly_forecast is in the weather, it is hourly
+        if(weather.hourly_forecast) //if hourly_forecast is in the weather, it is hourly
         {
-            result = new CreateHourly(wObj, units);
+            result = new CreateHourly(weather, units);
         }
-        else if(wObj.forecast) // 3-day forecast
+        else if(weather.forecast) // 3-day forecast
         {
-            result = new Create3Day(wObj, units);
+            result = new Create3Day(weather, units);
         }
-        else if(wObj.almanac) // Almanac request
+        else if(weather.almanac) // Almanac request
         {
-            result = new CreateAlmanac(wObj, units);
+            result = new CreateAlmanac(weather, units);
         }
         else
         {
