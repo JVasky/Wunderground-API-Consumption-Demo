@@ -5,7 +5,7 @@
  * Title: weather.php
  * Description: Accesses the weather underground API and is accessed via POST by weather.js.
  */
-require_once __DIR__.'/unirest-php-master/lib/Unirest.php';
+require_once __DIR__.'/unirest-php/lib/Unirest.php';
 
 $token = ""; // My API authorization key)
 $zip = $_POST['zip']; // Get zip

@@ -1,3 +1,6 @@
 [submodule "jquery-validation"]
 	path = jquery-validation
 	url = git@github.com:jzaefferer/jquery-validation.git
+[submodule "unirest-php"]
+	path = unirest-php
+	url = git@github.com:Mashape/unirest-php.git
