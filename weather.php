@@ -7,7 +7,7 @@
  */
 require_once __DIR__.'/unirest-php-master/lib/Unirest.php';
 
-$token = "635161d7b35541ad"; // My API authorization key)
+$token = ""; // My API authorization key)
 $zip = $_POST['zip']; // Get zip
 $forecast = $_POST['forecast']; // Get forecast type
 $URL = "http://api.wunderground.com/api/$token/$forecast/q/$zip.json";
